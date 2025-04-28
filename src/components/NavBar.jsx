@@ -4,37 +4,72 @@ import { IoCartOutline } from "react-icons/io5";
 import logo from "/logo.svg";
 import { CartContext } from "../context/CartContext";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { IoMdMenu, IoIosClose } from "react-icons/io";
 
 const NavBar = () => {
   const [cartOpen, setCartOpen] = useState(false);
   const { cart, product, deleteFromCart } = useContext(CartContext);
+  const [isMenuOpen, SetIsMenuOpen] = useState(false);
+
+  const navLinks = [
+    { name: "Collections", href: "#" },
+    { name: "Men", href: "#" },
+    { name: "Women", href: "#" },
+    { name: "About", href: "#" },
+    { name: "Contact", href: "#" },
+  ];
 
   return (
     <>
       <div>
-        <nav className="flex justify-between mx-28 py-4 items-center">
+        <nav className="flex justify-between px-5 py-2 md:px-0 md:mx-28 md:py-4 items-center">
           <div className="flex gap-12 justify-center items-center">
-            <img src={logo} alt="logo" />
-            <div className="flex gap-5 justify-center items-center">
-              <a href="" className="text-darkGrayishBlue text-sm">
-                Collections
-              </a>
-              <a href="" className="text-darkGrayishBlue text-sm">
-                Men
-              </a>
-              <a href="" className="text-darkGrayishBlue text-sm">
-                Women
-              </a>
-              <a href="" className="text-darkGrayishBlue text-sm">
-                About
-              </a>
-              <a href="" className="text-darkGrayishBlue text-sm ">
-                Contact
-              </a>
+            <div className="flex md:block items-center gap-3">
+              <IoMdMenu
+                className="block md:hidden"
+                onClick={() => SetIsMenuOpen(!isMenuOpen)}
+                size="25"
+              />
+
+              {/* Mobile Menu */}
+                <div
+                  className={`fixed flex flex-col top-0 left-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-50 ${
+                    isMenuOpen ? "translate-x-0" : "-translate-x-full"
+                  } `}
+                >
+                  <div className="p-3">
+                    <IoIosClose
+                      size="40"
+                      className="text-darkGrayishBlue"
+                      onClick={() => SetIsMenuOpen(false)}
+                    />
+                  </div>
+                  <div className="flex flex-col gap-4 p-5">
+                    {navLinks.map((link) => (
+                      <a
+                        href={link.href}
+                        className="text-black text-lg font-bold"
+                      >
+                        {link.name}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+
+
+              <img src={logo} alt="logo" />
+            </div>
+
+            <div className="hidden md:flex gap-5 justify-center items-center">
+              {navLinks.map((link) => (
+                <a href={link.href} className="text-darkGrayishBlue text-sm">
+                  {link.name}
+                </a>
+              ))}
             </div>
           </div>
 
-          <div className="flex items-center gap-10">
+          <div className="flex items-center gap-5 md:gap-10">
             <div className="relative">
               <IoCartOutline
                 className="cursor-pointer text-darkGrayishBlue hover:text-veryDarkBlue"
