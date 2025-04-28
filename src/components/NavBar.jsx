@@ -23,7 +23,7 @@ const NavBar = () => {
   return (
     <>
       <div className="">
-        <nav className="flex justify-between px-5 py-3.5 md:px-0 md:mx-28 md:py-4 items-center">
+        <nav className="flex justify-between gap-4 px-5 py-3.5 md:px-0 md:mx-28 md:py-4 items-center">
           <div className="flex gap-12 justify-center items-center">
             <div className="flex md:block items-center gap-3">
               <IoMdMenu

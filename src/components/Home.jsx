@@ -140,13 +140,15 @@ const Home = () => {
             <div className="h-12">
               {/* Add to Cart Button */}
               <button
-                className="btn h-full flex items-center  justify-center w-full hover:cursor-pointer gap-3 px-14 text-sm text-veryDarkBlue rounded-sm bg-myOrange font-bold hover:opacity-70"
+                className="btn h-full w-full flex items-center justify-center hover:cursor-pointer gap-3 px-14 text-sm text-veryDarkBlue rounded-sm bg-myOrange font-bold hover:opacity-70 whitespace-nowrap"
                 onClick={addToCart}
               >
                 <span>
                   <IoCartOutline size="20" />
                 </span>
-                <span className="text-xs lg:text-sm">Add to cart</span>
+                <span className="text-xs md:text-[12px] lg:text-sm">
+                  Add to cart
+                </span>
               </button>
             </div>
           </div>
