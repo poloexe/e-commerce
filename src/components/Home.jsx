@@ -43,17 +43,27 @@ const Home = () => {
         {/* Hero Img */}
         <div className="relative flex md:flex-col gap-4">
           <div>
+            {/* Main Image */}
             <img
-              src={product.images.main[0].src}
-              alt={`${product.images.main[0].name}`}
+              src={product.images.main[currentImageIndex].src}
+              alt={`${product.images.main[currentImageIndex].name}`}
               className="h-64 md:h-[21rem] w-screen md:w-[23rem] md:rounded-lg"
-              onClick={() => openLightBox(0)}
+              onClick={() => openLightBox(currentImageIndex)}
             />
 
-            <button className="block md:hidden absolute left-2 top-1/2 transform -translate-y-1/2 text-black bg-white rounded-full p-2">
+            {/* Previous Button */}
+            <button
+              className="block md:hidden absolute left-2 top-1/2 transform -translate-y-1/2 text-black bg-white rounded-full p-2"
+              onClick={prevImage}
+            >
               <GrPrevious size="15" />
             </button>
-            <button className="block md:hidden absolute right-2 top-1/2 transform -translate-y-1/2 text-black bg-white rounded-full p-2">
+
+            {/* Next Button */}
+            <button
+              className="block md:hidden absolute right-2 top-1/2 transform -translate-y-1/2 text-black bg-white rounded-full p-2"
+              onClick={nextImage}
+            >
               <GrNext size="15" />
             </button>
           </div>
