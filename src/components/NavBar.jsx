@@ -4,7 +4,8 @@ import { IoCartOutline } from "react-icons/io5";
 import logo from "/logo.svg";
 import { CartContext } from "../context/CartContext";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import { IoMdMenu, IoIosClose } from "react-icons/io";
+import { IoMdMenu } from "react-icons/io";
+import MobileMenu from "../mobile/MobileMenu";
 
 const NavBar = () => {
   const [cartOpen, setCartOpen] = useState(false);
@@ -32,37 +33,22 @@ const NavBar = () => {
               />
 
               {/* Mobile Menu */}
-                <div
-                  className={`fixed flex flex-col top-0 left-0 h-full w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-50 ${
-                    isMenuOpen ? "translate-x-0" : "-translate-x-full"
-                  } `}
-                >
-                  <div className="p-3">
-                    <IoIosClose
-                      size="40"
-                      className="text-darkGrayishBlue"
-                      onClick={() => SetIsMenuOpen(false)}
-                    />
-                  </div>
-                  <div className="flex flex-col gap-4 p-5">
-                    {navLinks.map((link) => (
-                      <a
-                        href={link.href}
-                        className="text-black text-lg font-bold"
-                      >
-                        {link.name}
-                      </a>
-                    ))}
-                  </div>
-                </div>
-
+              <MobileMenu
+                navLinks={navLinks}
+                isMenuOpen={isMenuOpen}
+                SetIsMenuOpen={SetIsMenuOpen}
+              />
 
               <img src={logo} alt="logo" />
             </div>
 
             <div className="hidden md:flex gap-5 justify-center items-center">
-              {navLinks.map((link) => (
-                <a href={link.href} className="text-darkGrayishBlue text-sm">
+              {navLinks.map((link, index) => (
+                <a
+                  href={link.href}
+                  className="text-darkGrayishBlue text-sm"
+                  key={index}
+                >
                   {link.name}
                 </a>
               ))}
