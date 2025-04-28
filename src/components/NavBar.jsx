@@ -23,7 +23,7 @@ const NavBar = () => {
   return (
     <>
       <div className="">
-        <nav className="flex justify-between gap-4 px-5 py-3.5 md:px-0 md:mx-28 md:py-4 items-center">
+        <nav className="flex justify-between gap-4 px-5 py-3.5 md:px-0 md:mx-28 md:py-5 items-center">
           <div className="flex gap-12 justify-center items-center">
             <div className="flex md:block items-center gap-3">
               <IoMdMenu
@@ -44,13 +44,15 @@ const NavBar = () => {
 
             <div className="hidden md:flex gap-5 justify-center items-center">
               {navLinks.map((link, index) => (
-                <a
-                  href={link.href}
-                  className="text-darkGrayishBlue text-sm"
-                  key={index}
-                >
-                  {link.name}
-                </a>
+                <div key={index} className="group relative">
+                  <a
+                    href={link.href}
+                    className="text-darkGrayishBlue text-sm group-hover:text-veryDarkBlue"
+                  >
+                    {link.name}
+                  </a>
+                  <div className="absolute left-0 -bottom-5 h-[4px] w-0 bg-myOrange transition-all duration-300 group-hover:w-full"></div>
+                </div>
               ))}
             </div>
           </div>
