@@ -16,7 +16,7 @@ const LightBox = ({
   return (
     <div className="fixed inset-0 flex gap-5 justify-center items-center z-50">
       <div className="absolute inset-0 bg-black opacity-70 z-40"></div>
-      <div className="relative flex flex-col gap-5 justify-center items-center z-50">
+      <div className="relative flex flex-col gap-5 justify-center items-center z-50 px-4 md:px-0">
         <div className="relative">
           {/* Close Button */}
           <button
