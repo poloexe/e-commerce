@@ -45,8 +45,16 @@ const Home = () => {
           <div>
             {/* Main Image */}
             <img
-              src={product.images.main[currentImageIndex].src}
-              alt={`${product.images.main[currentImageIndex].name}`}
+              src={
+                window.innerWidth < 768
+                  ? product.images.main[currentImageIndex].src
+                  : product.images.main[0].src
+              }
+              alt={`${
+                window.innerWidth < 768
+                  ? product.images.main[currentImageIndex].name
+                  : product.images.main[0].name
+              }`}
               className="h-64 md:h-[21rem] w-screen md:w-[23rem] md:rounded-lg"
               onClick={() => openLightBox(currentImageIndex)}
             />
